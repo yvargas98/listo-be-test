@@ -1,31 +1,37 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
-import { Company } from './schema/companies.schema';
+import { Company } from './schemas/companies.schema';
 import { AppService } from './app.service';
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
-export class CompanyInput {
+export class ContactInformationInput {
     @Field()
-    name: string;
-
-    @Field({nullable: true})
-    city: string;
-
-    @Field({nullable: true})
-    country: string;
-
-    @Field({nullable: true})
     email: string;
 
     @Field()
     phone: string;
 
-    @Field({nullable: true})
+    @Field()
     website: string;
+}
+
+@InputType()
+export class AddressInput {
+    @Field({nullable: true})
+    streetAddress: string;
+
+    @Field()
+    city: string;
+
+    @Field()
+    country: string;
 
     @Field({nullable: true})
-    companyType: string;
+    postalCode: string;
+}
 
+@InputType()
+export class CompanyDetailsInput {
     @Field({nullable: true})
     foundedOn: Date;
 
@@ -33,7 +39,43 @@ export class CompanyInput {
     numberOfEmployees: number;
 
     @Field({nullable: true})
-    socialNetworks: string;
+    industry: string;
+
+    @Field({nullable: true})
+    description: string;
+}
+
+@InputType()
+export class SocialNetworksInput {
+    @Field({nullable: true})
+    facebook: string;
+
+    @Field({nullable: true})
+    instagram: string;
+
+    @Field({nullable: true})
+    linkedIn: string;
+
+    @Field({nullable: true})
+    tiktok: string;
+}
+
+@InputType()
+export class CompanyInput {
+    @Field()
+    name: string;
+
+    @Field()
+    contactInformation: ContactInformationInput
+
+    @Field()
+    address: AddressInput
+
+    @Field()
+    companyDetails: CompanyDetailsInput
+
+    @Field({nullable: true})
+    socialNetworks: SocialNetworksInput
 }
 
 @Resolver((of) => Company)
