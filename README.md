@@ -24,12 +24,17 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Technical Test for Backend Role at Listo Chile.
 
 ## Installation
 
 ```bash
 $ npm install
+```
+
+## Environment Variables
+```bash
+MONGODB_URI="your mongoDB uri"
 ```
 
 ## Running the app
@@ -43,19 +48,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support

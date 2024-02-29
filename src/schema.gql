@@ -2,25 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Company {
-  _id: ID!
-  name: String!
-  city: String
-  country: String
-  email: String
+type ContactInformation {
+  email: String!
   phone: String!
-  website: String
-  companyType: String
+  website: String!
+}
+
+type Address {
+  streetAddress: String
+  city: String!
+  country: String!
+  postalCode: String
+}
+
+type CompanyDetails {
   foundedOn: DateTime
   numberOfEmployees: Float!
-  socialNetworks: String
-  createdAt: DateTime!
+  industry: String
+  description: String
 }
 
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type SocialNetworks {
+  facebook: String
+  instagram: String
+  linkedIn: String
+  tiktok: String
+}
+
+type Company {
+  _id: ID!
+  name: String!
+  contactInformation: ContactInformation!
+  address: Address!
+  companyDetails: CompanyDetails!
+  socialNetworks: SocialNetworks
+  createdAt: DateTime!
+}
 
 type Query {
   companies: [Company!]!
@@ -34,13 +56,35 @@ type Mutation {
 
 input CompanyInput {
   name: String!
-  city: String
-  country: String
-  email: String
+  contactInformation: ContactInformationInput!
+  address: AddressInput!
+  companyDetails: CompanyDetailsInput!
+  socialNetworks: SocialNetworksInput
+}
+
+input ContactInformationInput {
+  email: String!
   phone: String!
-  website: String
-  companyType: String
+  website: String!
+}
+
+input AddressInput {
+  streetAddress: String
+  city: String!
+  country: String!
+  postalCode: String
+}
+
+input CompanyDetailsInput {
   foundedOn: DateTime
   numberOfEmployees: Float!
-  socialNetworks: String
+  industry: String
+  description: String
+}
+
+input SocialNetworksInput {
+  facebook: String
+  instagram: String
+  linkedIn: String
+  tiktok: String
 }
