@@ -87,9 +87,9 @@ export class AppResolver {
         return this.companyService.getAllCompanies();
     }
 
-    @Query(() => Company)
-    async company(@Args('id') id: string): Promise<Company> {
-        return this.companyService.getCompanyById(id);
+    @Query(() => Company, { nullable: true })
+    async company(@Args('id') id: string): Promise<Company | null> {
+        return await this.companyService.getCompanyById(id);
     }
 
     @Mutation(() => Company)
@@ -97,8 +97,8 @@ export class AppResolver {
         return this.companyService.createCompany(companyInput);
     }
 
-    @Mutation(() => Company)
-    async deleteCompany(@Args('id') id: string): Promise<Company> {
+    @Mutation(() => Company, {nullable: true})
+    async deleteCompany(@Args('id') id: string): Promise<Company | null> {
         return this.companyService.deleteCompany(id);
     }
 }
