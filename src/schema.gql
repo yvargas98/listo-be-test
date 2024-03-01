@@ -46,12 +46,12 @@ type Company {
 
 type Query {
   companies: [Company!]!
-  company(id: String!): Company!
+  company(id: String!): Company
 }
 
 type Mutation {
   createCompany(input: CompanyInput!): Company!
-  deleteCompany(id: String!): Company!
+  deleteCompany(id: String!): Company
 }
 
 input CompanyInput {
